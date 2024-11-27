@@ -50,7 +50,7 @@ def analyze_keys(num_keys, model):
     total_tries = 0
     start_time = time.time()
     
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ThreadPoolExecutor(max_workers=5) as executor: # Change workers to your desired value
         futures = []
         try:
             while len(valid_keys) < num_keys:
@@ -64,6 +64,9 @@ def analyze_keys(num_keys, model):
                         if valid:
                             valid_keys.append(key)
                             logging.info(f"Valid key found: {key}")
+                            with open('valid.txt', 'a') as f:
+                                f.write(f"{key}\n")
+                            logging.info(f"Writed to file: valid.txt")
                         else:
                             if error in invalid_errors:
                                 invalid_errors[error] += 1
@@ -74,7 +77,7 @@ def analyze_keys(num_keys, model):
                             elapsed_time = 1e-6  # Avoid division by zero
                         rate = total_tries / elapsed_time
                         # Update and overwrite the status line
-                        print(f"\rKeys Tried: {total_tries} | Valid: {len(valid_keys)} | Rate: {rate:.2f} keys/s\033[K", end='')
+                        print(f"\rKeys Tried: {total_tries} | Valid: {len(valid_keys)} | Rate: ~ {rate:.0f} keys/s\033[K", end='')
                         futures = []
         except KeyboardInterrupt:
             print(f"\n{Fore.YELLOW}Interrupted by user.{Style.RESET_ALL}")
