@@ -8,7 +8,7 @@ Welcome to **OpenAI Key Generator**, a tool designed for testing the validity of
 
 ### Features
 
-- 🛠 **Fake Key Generation**: Generates realistic, fake OpenAI API keys for testing purposes.
+- 🛠 **Key Generation**: Generates OpenAI API keys for testing purposes.
 - ✅ **Key Validation**: Verifies the validity of keys against selected OpenAI models.
 - 📊 **Error Analysis**: Tracks and categorizes errors encountered during the validation process.
 - 🔄 **Dynamic Rate Calculation**: Displays real-time key validation speed.
@@ -33,20 +33,20 @@ Welcome to **OpenAI Key Generator**, a tool designed for testing the validity of
 
 To get started, clone the repository and install the required dependencies:
 
-ёёёbash
+```bash
 git clone https://github.com/yourusername/openai-key-generator.git
 cd openai-key-generator
 pip install -r requirements.txt
-ёёё
+```
 
 ---
 
 ## Usage
 
 1. **Run the script**:
-   ёёёbash
+   ```bash
    python openai_key_generator.py
-   ёёё
+   ```
 
 2. **Choose a model**: Select from a list of available OpenAI models using an interactive prompt.
 
@@ -58,32 +58,30 @@ pip install -r requirements.txt
 
 ## Models Supported
 
-| Model Name       | Description                                         |
-|-------------------|-----------------------------------------------------|
-| GPT-4o           | High-intelligence flagship model for complex tasks |
-| GPT-4 Turbo      | Optimized model for faster processing               |
-| GPT-3.5 Turbo    | Cost-effective model for simple tasks               |
-| DALL·E           | Image generation and editing                       |
-| TTS              | Text-to-Speech conversion                          |
-| Whisper          | Audio-to-Text transcription                        |
-| Embeddings       | Numerical representation of text                   |
-| Moderation       | Content moderation                                 |
+| Model Name       | Description                                                       |
+|-------------------|------------------------------------------------------------------|
+| GPT-4o           | High-intelligence flagship model for complex tasks                |
+| o1-preview       | Models trained with reinforcement learning for complex reasoning. |
+| GPT-4 Turbo      | Optimized model for faster processing                             |
+| GPT-3.5 Turbo    | Cost-effective model for simple tasks                             |
+| DALL·E           | Image generation and editing                                      |
+| TTS              | Text-to-Speech conversion                                         |
+| Whisper          | Audio-to-Text transcription                                       |
+| Embeddings       | Numerical representation of text                                  |
+| Moderation       | Content moderation                                                |
 
 ---
 
 ## Screenshots
 
-### Banner
-
-![Program Banner](https://via.placeholder.com/800x150?text=Program+Banner)
 
 ### Interactive Model Selection
 
-![Interactive Prompt](https://via.placeholder.com/800x300?text=Interactive+Prompt)
+![Interactive Prompt](https://github.com/user-attachments/assets/a4db5cac-70ba-42ee-893a-92e5420f5124)
 
 ### Key Validation Progress
 
-![Validation Progress](https://via.placeholder.com/800x300?text=Validation+Progress)
+![Validation Progress](https://github.com/user-attachments/assets/e88dd8c9-5475-4c32-925d-80de4674e915)
 
 ---
 
