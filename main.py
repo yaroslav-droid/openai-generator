@@ -50,7 +50,7 @@ def analyze_keys(num_keys, model):
     total_tries = 0
     start_time = time.time()
     
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=5) as executor:
         futures = []
         try:
             while len(valid_keys) < num_keys:
