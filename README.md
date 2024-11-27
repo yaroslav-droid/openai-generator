@@ -34,8 +34,8 @@ Welcome to **OpenAI Key Generator**, a tool designed for testing the validity of
 To get started, clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/yourusername/openai-key-generator.git
-cd openai-key-generator
+git clone https://github.com/yaroslav-droid/openai-generator.git
+cd openai-generator
 pip install -r requirements.txt
 ```
 
@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 1. **Run the script**:
    ```bash
-   python openai_key_generator.py
+   python main.py
    ```
 
 2. **Choose a model**: Select from a list of available OpenAI models using an interactive prompt.
