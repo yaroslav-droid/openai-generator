@@ -5,7 +5,6 @@ import inquirer
 from openai import OpenAIError
 import logging
 from colorama import init, Fore, Style
-import sys
 import time
 import os
 
