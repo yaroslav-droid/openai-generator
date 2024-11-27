@@ -1,6 +1,6 @@
-![image](https://github.com/user-attachments/assets/827ca64f-b74f-4da9-86f3-cf012f6283b2)# OpenAI Key Generator
+# OpenAI Key Generator
 
-![Banner](https://via.placeholder.com/800x200?text=OpenAI+Key+Generator)
+![Banner](https://github.com/user-attachments/assets/bf2a300c-1edd-447a-a833-a94eb36f1c36)
 
 ## Overview
 
@@ -73,9 +73,13 @@ pip install -r requirements.txt
 
 ## Screenshots
 
+### Banner
+
+![Program Banner](https://via.placeholder.com/800x150?text=Program+Banner)
+
 ### Interactive Model Selection
 
-![Interactive Prompt](![image](https://github.com/user-attachments/assets/ca06eecf-c8bf-419a-ad29-dcdce5e8db98))
+![Interactive Prompt](https://via.placeholder.com/800x300?text=Interactive+Prompt)
 
 ### Key Validation Progress
 
