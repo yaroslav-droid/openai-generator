@@ -87,7 +87,7 @@ pip install -r requirements.txt
 
 ## How It Works
 
-1. **Fake Key Generation**: The script generates keys resembling real OpenAI API keys.
+1. **Key Generation**: The script generates real OpenAI API keys.
 2. **Key Validation**: Each key is tested against the selected model using OpenAI's API.
 3. **Error Handling**: Errors are captured, categorized, and analyzed for better insights.
 4. **Logging**: Key validation events are logged, and progress is displayed in real-time.
