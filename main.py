@@ -7,6 +7,7 @@ import logging
 from colorama import init, Fore, Style
 import time
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Initialize colorama
 init(autoreset=True)
@@ -43,36 +44,43 @@ def check_key_validity(key, model):
         return False, str(e)
 
 # Function for analyzing keys
-def analyze_keys(num_keys, model, max_attempts=1000000):
+def analyze_keys(num_keys, model):
     valid_keys = []
     invalid_errors = {}
     total_tries = 0
     start_time = time.time()
     
-    try:
-        while len(valid_keys) < num_keys:
-            key = generate_fake_key()
-            total_tries += 1
-            valid, error = check_key_validity(key, model)
-            if valid:
-                valid_keys.append(key)
-                logging.info(f"Valid key found: {key}")
-            else:
-                if error in invalid_errors:
-                    invalid_errors[error] += 1
-                else:
-                    invalid_errors[error] = 1
-            elapsed_time = time.time() - start_time
-            if elapsed_time == 0:
-                elapsed_time = 1e-6  # Avoid division by zero
-            rate = total_tries / elapsed_time
-            # Update and overwrite the status line
-            print(f"\rKeys Tried: {total_tries} | Valid: {len(valid_keys)} | Rate: {rate:.2f} keys/s\033[K", end='')
-    except KeyboardInterrupt:
-        print(f"\n{Fore.YELLOW}Interrupted by user.{Style.RESET_ALL}")
-    finally:
-        # Move to the next line after the loop
-        print()
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = []
+        try:
+            while len(valid_keys) < num_keys:
+                key = generate_fake_key()
+                total_tries += 1
+                futures.append(executor.submit(check_key_validity, key, model))
+                
+                if len(futures) >= 10:
+                    for future in as_completed(futures):
+                        valid, error = future.result()
+                        if valid:
+                            valid_keys.append(key)
+                            logging.info(f"Valid key found: {key}")
+                        else:
+                            if error in invalid_errors:
+                                invalid_errors[error] += 1
+                            else:
+                                invalid_errors[error] = 1
+                        elapsed_time = time.time() - start_time
+                        if elapsed_time == 0:
+                            elapsed_time = 1e-6  # Avoid division by zero
+                        rate = total_tries / elapsed_time
+                        # Update and overwrite the status line
+                        print(f"\rKeys Tried: {total_tries} | Valid: {len(valid_keys)} | Rate: {rate:.2f} keys/s\033[K", end='')
+                        futures = []
+        except KeyboardInterrupt:
+            print(f"\n{Fore.YELLOW}Interrupted by user.{Style.RESET_ALL}")
+        finally:
+            # Move to the next line after the loop
+            print()
     
     # Find the most common error
     if invalid_errors:
